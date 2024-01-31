@@ -102,4 +102,32 @@ do
         isCorrect = true;
     }
 } while (isCorrect == false);
-Console.Read();
+Console.Read(); 
+static bool GrantAcess()
+{
+    string passWord = "";
+    bool isCorrect = false;
+    int counter = 0;
+    while (isCorrect == false)
+    {
+        Console.WriteLine("Please enter your combination: ");
+        passWord = Console.ReadLine().Trim();
+        if (passWord != "13579")
+        {
+            counter++;
+            if (counter == 5)
+            {
+                Console.WriteLine("There are too many incorrect attempt. Goodbye!");
+                break;
+            }
+            Console.WriteLine($"Incorrect Combination. Please try again! You have {5 - counter} attempt(s) left.");
+        }
+        else
+        {
+            Console.WriteLine("Welcome!");
+            isCorrect = true;
+        }
+    }
+    return isCorrect;
+}
+GrantAcess();
